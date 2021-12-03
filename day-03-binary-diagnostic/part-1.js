@@ -1,5 +1,7 @@
 const diagnostics = require("../filereader.js").readBinary();
 
+const convertBinToDec = (value) => parseInt(value.map(x => x.toString()).join(''), 2);
+
 let indexToFrequency = new Map();
 
 for (diagnostic of diagnostics){
@@ -13,15 +15,8 @@ for (diagnostic of diagnostics){
 
 const values = Array.from(indexToFrequency.values());
 
-const gamma = values.map(value => value > 0 ? 1 : 0)
-    .map(x => x.toString())
-    .join('');
+const gamma = values.map(value => value > 0 ? 1 : 0);
+const epsilon = values.map(value => value < 0 ? 1 : 0);
 
-const epsilon = values.map(value => value < 0 ? 1 : 0)
-    .map(x => x.toString())
-    .join('');
+console.log(convertBinToDec(gamma) * convertBinToDec(epsilon));
 
-const epsilonAsInt = parseInt(epsilon, 2);
-const gammaAsInt = parseInt(gamma, 2);
-
-console.log(epsilonAsInt * gammaAsInt);
