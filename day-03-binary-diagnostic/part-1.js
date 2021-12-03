@@ -1,6 +1,6 @@
 const diagnostics = require("../filereader.js").readBinary();
 
-const convertBinToDec = (value) => parseInt(value.map(x => x.toString()).join(''), 2);
+const convertBinToDec = (bin) => parseInt(bin.map(digit => digit.toString()).join(''), 2);
 
 let indexToFrequency = new Map();
 
@@ -19,4 +19,3 @@ const gamma = values.map(value => value > 0 ? 1 : 0);
 const epsilon = values.map(value => value < 0 ? 1 : 0);
 
 console.log(convertBinToDec(gamma) * convertBinToDec(epsilon));
-
