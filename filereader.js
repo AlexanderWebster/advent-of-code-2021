@@ -12,3 +12,11 @@ exports.readMovements = (separator = "\n") => {
     .toString()
     .split(separator);
 };
+
+exports.readBinary = (separator = "\n") => {
+  return require("fs")
+  .readFileSync("input", "utf-8")
+  .split(separator)
+  .filter(Boolean)
+  .map(n => n.split("").map( num => Number(num)))
+};
