@@ -4,5 +4,8 @@
   "description": "Let's help Santa! :)",
   "main": "index.js",
   "author": "Alexander Webster",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "pubsub-js": "^1.9.4"
+  }
 }
