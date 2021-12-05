@@ -9,7 +9,7 @@ const order = ({ a, b }) =>
 const rangeInclusive = ({ a, b }) => {
   const ordered = order({ a, b });
   let range = [];
-  for (var i = ordered.start; i <= ordered.end; ++i) range.push(i);
+  for (let i = ordered.start; i <= ordered.end; ++i) range.push(i);
   return range;
 };
 
