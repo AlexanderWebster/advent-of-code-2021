@@ -63,18 +63,16 @@ const main = () => {
 
     // enumerate points between line coords
     switch (line.orientation) {
-      case HORIZONTAL: {
-        const pair = { a: line.x1, b: line.x2 };
-        const range = rangeInclusive(pair);
+    case HORIZONTAL: {
+        const range = rangeInclusive({ a: line.x1, b: line.x2 });
         points = range.map((point) => [point, line.y1]);
         break;
-      }
-      case VERTICAL: {
-        const pair = { a: line.y1, b: line.y2 };
-        const range = rangeInclusive(pair);
+        }
+        case VERTICAL: {
+        const range = rangeInclusive({ a: line.y1, b: line.y2 });
         points = range.map((point) => [line.x1, point]);
         break;
-      }
+        }
       case DIAGONAL: {
         const lineLength = Math.abs(line.x1 - line.x2);
         const xMovement = (line.x1 - line.x2) * -1 / lineLength;

@@ -37,10 +37,10 @@ const main = () => {
       coords[i][1] === coords[i + 1][1]
     ) {
       const line = {
-        startX: coords[i][0],
-        startY: coords[i][1],
-        endX: coords[i + 1][0],
-        endY: coords[i + 1][1],
+        x1: coords[i][0],
+        y1: coords[i][1],
+        x2: coords[i + 1][0],
+        y2: coords[i + 1][1],
 
         orientation: coords[i][0] !== coords[i + 1][0] ? HORIZONTAL : VERTICAL,
       };
@@ -57,15 +57,13 @@ const main = () => {
     // enumerate points between line coords
     switch (line.orientation) {
       case HORIZONTAL: {
-        const pair = { a: line.startX, b: line.endX };
-        const range = rangeInclusive(pair);
-        points = range.map((point) => [point, line.startY]);
+        const range = rangeInclusive({ a: line.x1, b: line.x2 });
+        points = range.map((point) => [point, line.y1]);
         break;
       }
       case VERTICAL: {
-        const pair = { a: line.startY, b: line.endY };
-        const range = rangeInclusive(pair);
-        points = range.map((point) => [line.startX, point]);
+        const range = rangeInclusive({ a: line.y1, b: line.y2 });
+        points = range.map((point) => [line.x1, point]);
         break;
       }
     }
