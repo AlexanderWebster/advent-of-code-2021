@@ -7,6 +7,7 @@ const parseLanternfishInitialState = (filename) => {
     .map((x) => parseInt(x));
 
   const stageToCount = new Map();
+  // initialize stages in map to keep insertion order
   [...Array(9).keys()].reverse().forEach((key) => stageToCount.set(key, 0));
 
   input.forEach((stage) => addOrSet(stageToCount, stage, 1));
@@ -25,7 +26,6 @@ const predictLanternfishPopulation = (filename, days) => {
         addOrSet(stageToCount, 6, value);
         addOrSet(stageToCount, 8, value);
       } else {
-        stageToCount.set(key, 0);
         stageToCount.set(key, lastValue);
         lastValue = value;
       }
@@ -38,4 +38,3 @@ const predictLanternfishPopulation = (filename, days) => {
 };
 
 export { predictLanternfishPopulation };
-
