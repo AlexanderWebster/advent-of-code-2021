@@ -79,8 +79,9 @@ const main = () => {
   }
 
   const totalCrossings = [...pointToCrossings].filter(
-    ([point, crossings]) => crossings >= 2
+    ([_, crossings]) => crossings >= 2
   ).length;
+  
   console.log(totalCrossings);
 };
 
