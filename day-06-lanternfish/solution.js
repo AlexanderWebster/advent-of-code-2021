@@ -1,7 +1,7 @@
-import { repeat, add } from "../utilities.js";
+import { repeat, add, addOrSet } from "../utilities.js";
 import { readFileSync } from "fs";
 
-const predictLanternfishPopulation = (filename, days) => {
+const parseLanternfishInitialState = (filename) => {
   const input = readFileSync(filename, "utf-8")
     .split(",")
     .map((x) => parseInt(x));
@@ -9,25 +9,26 @@ const predictLanternfishPopulation = (filename, days) => {
   const stageToCount = new Map();
   [...Array(9).keys()].reverse().forEach((key) => stageToCount.set(key, 0));
 
-  const addOrSet = (map, k, v) => {
-    map.has(k) ? map.set(k, map.get(k) + v) : map.set(k, v);
-  };
-
   input.forEach((stage) => addOrSet(stageToCount, stage, 1));
 
+  return stageToCount;
+};
+
+const predictLanternfishPopulation = (filename, days) => {
+  const stageToCount = parseLanternfishInitialState(filename);
+  
   repeat(() => {
-    let last = 0;
+    let lastValue = 0;
     for (let [key, value] of stageToCount) {
       if (key == 0) {
-        const temp = stageToCount.get(key);
-        stageToCount.set(key, last);
-        addOrSet(stageToCount, 6, temp);
-        addOrSet(stageToCount, 8, temp);
+        stageToCount.set(key, lastValue);
+        addOrSet(stageToCount, 6, value);
+        addOrSet(stageToCount, 8, value);
+      } else {
+        stageToCount.set(key, 0);
+        stageToCount.set(key, lastValue);
+        lastValue = value;
       }
-      const temp = stageToCount.get(key);
-      stageToCount.set(key, 0);
-      stageToCount.set(key, last);
-      last = temp;
     }
   }, days);
 
@@ -37,3 +38,4 @@ const predictLanternfishPopulation = (filename, days) => {
 };
 
 export { predictLanternfishPopulation };
+
