@@ -3,4 +3,6 @@ const repeat = (func, times) => {
     times && --times && repeat(func, times);
 }
 
-export { repeat };
+const add = (a, b) => a + b;
+
+export { repeat, add };
