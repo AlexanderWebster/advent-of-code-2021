@@ -10,3 +10,4 @@ My solutions for Advent of Code 2021, in Javascript
 | ✔ [Day 4: Giant Squid](https://adventofcode.com/2021/day/4)| 🌟 | 🌟 |
 | ✔ [Day 5: Hydrothermal Venture](https://adventofcode.com/2021/day/5)| 🌟 | 🌟 |
 | ✔ [Day 6: Lanternfish](https://adventofcode.com/2021/day/6)| 🌟 | 🌟 |
+| ✔ [Day 7: The Treachery of Whales](https://adventofcode.com/2021/day/7)| ❌ | ❌ |
