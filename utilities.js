@@ -9,7 +9,14 @@ const add = (a, b) => a + b;
 
 // adds a value to the existing map value, or sets it
 const addOrSet = (map, k, v) => {
-    map.has(k) ? map.set(k, map.get(k) + v) : map.set(k, v);
-  };
+  map.has(k) ? map.set(k, map.get(k) + v) : map.set(k, v);
+};
 
-export { repeat, add, addOrSet };
+// increments value for a map's key
+const incrementValue = (map, k) => {
+  map.has(k) ? map.set(k, map.get(k) + 1) : map.set(k, 1);
+};
+
+const space = " ";
+
+export { repeat, add, addOrSet, incrementValue, space };
